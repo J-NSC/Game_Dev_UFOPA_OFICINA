@@ -54,16 +54,19 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-      
         HandleInput();
-        UpdatePlayerState();
+        if (playerState != PlayerState.Stagger)
+        {
+            UpdatePlayerState();
+        }
+
         UpdateAnimation();
     }
 
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(feetPosition.transform.position, 0.3f, groundLayer);
-        if(playerState != PlayerState.Death)
+        if(playerState != PlayerState.Death && playerState != PlayerState.Stagger)
             MovePlayer();
     }
 
@@ -100,7 +103,7 @@ public class Player : MonoBehaviour
 
     void UpdatePlayerState()
     {
-        if (currentHealth <= 0 && playerState != PlayerState.Death)
+        if (currentHealth <= 0 && playerState != PlayerState.Stagger )
         {
             playerState = PlayerState.Death;
             anim.SetTrigger("Death");
@@ -111,11 +114,10 @@ public class Player : MonoBehaviour
             playerState = PlayerState.Idle;
         }
 
-        if (rb.velocity.y < -1)
+        if (rb.velocity.y < -1 && playerState != PlayerState.Death)
         {
             playerState = PlayerState.Fall;
         }
-
         FlipPlayer();
     }
 

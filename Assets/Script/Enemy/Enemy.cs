@@ -13,7 +13,7 @@ public enum EnemyState{
 
 public class Enemy : MonoBehaviour
 {
-    EnemyState enemyState;
+    public EnemyState enemyState;
     
     // public delegate void ShotingHunterHandler(float Dir);
     // public static event ShotingHunterHandler shotingHunter;
@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
         {
             enemyState = EnemyState.attack;
             rbEnemy.velocity = Vector2.zero;
-            // Player.Instance.ModifyHealth(enemySo.damageValue, HealthModificationType.Damage);
+            Player.Instance.ModifyHealth(enemySo.damageValue, HealthModificationType.Damage);
         }
     }
     void Flip()

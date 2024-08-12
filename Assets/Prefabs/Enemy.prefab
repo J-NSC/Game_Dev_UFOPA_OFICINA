@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6708e5a1a152b244eba5a524b38d8965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyState: 0
   enemySo: {fileID: 11400000, guid: 9e9c0d38de130e3488e5d5f22e0219a2, type: 2}
   target: {fileID: 0}
   anim: {fileID: 0}
